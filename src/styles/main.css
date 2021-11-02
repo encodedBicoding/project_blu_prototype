@@ -35,7 +35,7 @@
 }
 .results_page{
   background-color: #EEEEEE;
-  background-image: none;
+  background-image: url('../assets/results_bg.png');
   background-repeat: no-repeat;
 }
 .main_container,
@@ -291,7 +291,8 @@
   margin-bottom: .7rem;
 }
 .icon_holder{
-  width: 8%;
+  width: auto;
+  height: 28px;
   margin-right: .9rem;
 }
 .bg_brown{
