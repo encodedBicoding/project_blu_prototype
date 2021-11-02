@@ -44,19 +44,19 @@
               <div class="table_value_item">
                 <span>Co2 per ton: </span>
                 <span>{{
-                  formatCurrency(dog_bed_made_from_virgin_polyester.co2_per_ton)
+                  formatCurrency(dog_beds_made_from_virgin_polyester.co2_per_ton)
                   }}</span>
               </div>
               <div class="table_value_item">
                 <span>Water used (Bath tubs): </span>
                 <span>{{
-                  formatCurrency(dog_bed_made_from_virgin_polyester.water_used)
+                  formatCurrency(dog_beds_made_from_virgin_polyester.water_used_bath_tubs)
                   }}</span>
               </div>
               <div class="table_value_item">
                 <span>Barrels of oil: </span>
                 <span>{{
-                  formatCurrency(dog_bed_made_from_virgin_polyester.barrel_of_oil)
+                  formatCurrency(dog_beds_made_from_virgin_polyester.barrels_of_oil)
                 }}</span>
               </div>
             </div>
@@ -70,19 +70,19 @@
             <div class="table_value_item">
               <span>Co2 per ton: </span>
               <span>{{
-                formatCurrency(dog_bed_made_from_recycled_polyester.co2_per_ton)
+                formatCurrency(dog_beds_made_from_recycled_polyester.co2_per_ton)
               }}</span>
             </div>
             <div class="table_value_item">
               <span>Water used (Bath tubs): </span>
               <span>{{
-                formatCurrency(dog_bed_made_from_recycled_polyester.water_used)
+                formatCurrency(dog_beds_made_from_recycled_polyester.water_used_bath_tubs)
               }}</span>
             </div>
             <div class="table_value_item">
               <span>Barrels of oil: </span>
               <span>{{
-                formatCurrency(dog_bed_made_from_recycled_polyester.barrel_of_oil)
+                formatCurrency(dog_beds_made_from_recycled_polyester.barrels_of_oil)
               }}</span>
             </div>
           </div>
@@ -98,11 +98,11 @@
             </div>
             <div class="table_value_item">
               <span>Water used (Bath tubs): </span>
-              <span>{{formatCurrency(total_saving.water_used)}}</span>
+              <span>{{formatCurrency(total_saving.water_used_bath_tubs)}}</span>
             </div>
             <div class="table_value_item">
               <span>Barrels of oil: </span>
-              <span>{{formatCurrency(total_saving.barrel_of_oil)}}</span>
+              <span>{{formatCurrency(total_saving.barrels_of_oil)}}</span>
             </div>
           </div>
           </div>
@@ -124,7 +124,7 @@
             <div class="table_value_item">
               <span>Water used (Bath tubs): </span>
               <span>{{
-                formatCurrency(traditional_leather_collar.water_used)
+                formatCurrency(traditional_leather_collar.water_used_bath_tubs)
               }}</span>
             </div>
           </div>
@@ -144,7 +144,7 @@
             <div class="table_value_item">
               <span>Water used (Bath tubs): </span>
               <span>{{
-                formatCurrency(recycled_leather_collar.water_used)
+                formatCurrency(recycled_leather_collar.water_used_bath_tubs)
               }}</span>
             </div>
           </div>
@@ -162,7 +162,7 @@
             </div>
             <div class="table_value_item">
               <span>Water used (Bath tubs): </span>
-              <span>{{formatCurrency(collar_water_saving.water_used)}}</span>
+              <span>{{formatCurrency(collar_water_saving.water_used_bath_tubs)}}</span>
             </div>
           </div>
           </div>
@@ -182,7 +182,7 @@
             <div class="table_value_item">
               <span>Water used (Bath tubs): </span>
               <span>{{
-                formatCurrency(traditional_leather_leash.water_used)
+                formatCurrency(traditional_leather_leash.water_used_bath_tubs)
               }}</span>
             </div>
           </div>
@@ -202,7 +202,7 @@
             <div class="table_value_item">
               <span>Water used (Bath tubs): </span>
               <span>{{
-                formatCurrency(recycled_leather_leash.water_used)
+                formatCurrency(recycled_leather_leash.water_used_bath_tubs)
               }}</span>
             </div>
           </div>
@@ -221,7 +221,7 @@
             <div class="table_value_item">
               <span>Water used (Bath tubs): </span>
               <span>{{
-                formatCurrency(leash_water_saving.water_used)
+                formatCurrency(leash_water_saving.water_used_bath_tubs)
               }}</span>
             </div>
           </div>
@@ -284,44 +284,44 @@ export default {
       averageDogBedWeight: '3.5',
       noOfLeatherCollarSold: 0,
       noOfLeatherLeashesSold: 0,
-      dog_bed_made_from_virgin_polyester: {
+      dog_beds_made_from_virgin_polyester: {
         co2_per_ton: 18750,
-        water_used: 32305000,
-        barrel_of_oil: 3500,
+        water_used_bath_tubs: 32305000,
+        barrels_of_oil: 3500,
       },
-      dog_bed_made_from_recycled_polyester: {
+      dog_beds_made_from_recycled_polyester: {
         co2_per_ton: 18750,
-        water_used: 32305000,
-        barrel_of_oil: 3500,
+        water_used_bath_tubs: 32305000,
+        barrels_of_oil: 3500,
       },
       total_saving: {
         co2_per_ton: 18750,
-        water_used: 32305000,
-        barrel_of_oil: 3500,
+        water_used_bath_tubs: 32305000,
+        barrels_of_oil: 3500,
       },
       traditional_leather_collar: {
         litres_of_water_used: 18750,
-        water_used: 32305000,
+        water_used_bath_tubs: 32305000,
       },
       recycled_leather_collar: {
         litres_of_water_used: 18750,
-        water_used: 32305000,
+        water_used_bath_tubs: 32305000,
       },
       collar_water_saving: {
         litres_of_water_used: 18750,
-        water_used: 32305000,
+        water_used_bath_tubs: 32305000,
       },
       traditional_leather_leash: {
         litres_of_water_used: 18750,
-        water_used: 32305000,
+        water_used_bath_tubs: 32305000,
       },
       recycled_leather_leash: {
         litres_of_water_used: 18750,
-        water_used: 32305000,
+        water_used_bath_tubs: 32305000,
       },
       leash_water_saving: {
         litres_of_water_used: 18750,
-        water_used: 32305000,
+        water_used_bath_tubs: 32305000,
       },
       co2_saving_per_item: {
         recycled_leather_collar: {
@@ -361,9 +361,28 @@ export default {
         ).then((res) => res);
         this.isLoading = false;
         console.log(response);
+        if (response.status === 200) {
+          // dog bed;
+          const dogBed = response.data.data[1];
+          console.log(dogBed);
+          this.dog_beds_made_from_virgin_polyester = dogBed.dog_beds_made_from_virgin_polyester;
+          this.dog_beds_made_from_recycled_polyester = dogBed.dog_beds_made_from_recycled_polyester;
+          this.total_saving = dogBed.total_saving;
+          const collarLeash = response.data.data[3];
+          this.collar_water_saving = collarLeash.collar_water_saving;
+          this.leash_water_saving = collarLeash.leash_water_saving;
+          this.recycled_leather_collar = collarLeash.recycled_leather_collar;
+          this.recycled_leather_leash = collarLeash.recycled_leather_leash;
+          this.traditional_leather_collar = collarLeash.traditional_leather_collar;
+          this.traditional_leather_leash = collarLeash.traditional_leather_leash;
+          this.hasResults = true;
+        } else {
+          this.isLoading = false;
+          this.hasResults = false;
+        }
       } catch (err) {
         this.isLoading = false;
-        this.hasResults = true;
+        this.hasResults = false;
         console.log(err);
       }
     },
