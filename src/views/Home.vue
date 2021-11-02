@@ -373,7 +373,9 @@
                 <img src="../assets/shp_1.svg" width="auto" height="20%" class="shp_icon"/>
                 <p>c02 saved (tons)</p>
                 <p class="cc_value">
-                  {{formatCurrency(dog_beds_made_from_virgin_polyester.co2_per_ton)}}
+                  {{formatCurrency(
+                    co2_saving_per_item.recycled_leather_collar.co2_saved
+                  )}}
                 </p>
               </div>
               <br/>
@@ -384,7 +386,9 @@
                 <img src="../assets/shp_1.svg" width="auto" height="20%" class="shp_icon"/>
                 <p>c02 saved (tons)</p>
                 <p class="cc_value">
-                  {{formatCurrency(dog_beds_made_from_virgin_polyester.co2_per_ton)}}
+                  {{formatCurrency(
+                    co2_saving_per_item.recycled_leather_leash.co2_saved
+                  )}}
                 </p>
               </div>
             </div>
@@ -524,7 +528,6 @@ export default {
             },
           ).then((res) => res);
           this.isLoading = false;
-          console.log(response);
           if (response.status === 200) {
             // dog bed;
             const dogBed = response.data.data[1];
@@ -540,6 +543,11 @@ export default {
             this.traditional_leather_collar = collarLeash.traditional_leather_collar;
             this.traditional_leather_leash = collarLeash.traditional_leather_leash;
             this.hasResults = true;
+            const co2PerSaving = response.data.data[4];
+            this.co2_saving_per_item.recycled_leather_collar.co2_saved = co2PerSaving
+              .recycled_leather_collar;
+            this.co2_saving_per_item.recycled_leather_leash.co2_saved = co2PerSaving
+              .recycled_leather_leash;
           } else {
             this.isLoading = false;
             this.hasResults = false;
