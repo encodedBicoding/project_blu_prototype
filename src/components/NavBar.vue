@@ -35,7 +35,7 @@ export default {
 }
 .logo_container{
   width: auto;
-  height: 70%;
+  height: 25px;
 }
 
 @media screen and (max-width: 1024px) {
