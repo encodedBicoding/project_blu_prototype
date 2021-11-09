@@ -108,17 +108,62 @@
     <div v-if="hasResults" class="results_page">
       <NavBar/>
       <div class="results_container">
+        <h3 class="font_white">Processed Analysis</h3>
+        <br/>
         <div class="result_cc">
           <div class="row_space_btwn_center result_cc_h wd_100">
-            <h3>Processed Analysis</h3>
+            <div class="header_title">
+              <h2>Project Blu</h2>
+              <h2>Sustainability Report</h2>
+            </div>
             <div class="sm_btn" v-on:click="showEditModal">
               Edit Data Input
             </div>
           </div>
           <section class="carbon_analysis">
-            <label class="table_header_label">Carbon footprint analysis per year</label>
+            <h3 class="ct_p">Total Saving</h3>
+            <div class="carbon_total">
+              <div class="ct_data_container">
+                <div class="ct_data_content_container bg_green">
+                  <div class="icon_holder">
+                    <img src="../assets/shp_4.svg" width="100%" height="100%"/>
+                  </div>
+                  <div class="ts_cc">
+                    <p>c02 per ton</p>
+                    <p class="cc_value">
+                      {{formatCurrency(total_saving.co2_per_ton)}}
+                    </p>
+                  </div>
+                </div>
+                <div class="ct_data_content_container bg_blue">
+                  <div class="icon_holder">
+                    <img src="../assets/shp_5.svg" width="100%" height="100%"/>
+                  </div>
+                  <div class="ts_cc">
+                    <p>WATER USED (BATH TUBS)</p>
+                    <p class="cc_value">
+                      {{formatCurrency(total_saving.water_used_bath_tubs)}}
+                    </p>
+                  </div>
+                </div>
+                <div class="ct_data_content_container bg_brown bottom">
+                  <div class="icon_holder">
+                    <img src="../assets/shp_6.svg" width="100%" height="100%"/>
+                  </div>
+                  <div class="ts_cc">
+                    <p>BARRELS OF OIL</p>
+                    <p class="cc_value">
+                      {{formatCurrency(total_saving.barrels_of_oil)}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="table_container">
-              <h4 class="table_h">Raw material</h4>
+              <div class="ct_data_container">
+                <h4 class="table_h">Raw material</h4>
+                <p class="font_black font_small">Here's the breakdown of the calculation</p>
+              </div>
               <div class="table_content_container">
                 <div class="table_content">
                   <div class="tch">
@@ -180,56 +225,45 @@
                 </div>
               </div>
             </div>
-            <div class="carbon_total">
-              <p class="ct_p">Total Saving</p>
-              <div class="ct_data_container">
-                <div class="ct_data_content_container bg_green">
-                  <div class="icon_holder">
-                    <img src="../assets/shp_4.svg" width="100%" height="100%"/>
-                  </div>
-                  <div class="ts_cc">
-                    <p>c02 per ton</p>
-                    <p class="cc_value">
-                      {{formatCurrency(total_saving.co2_per_ton)}}
-                    </p>
-                  </div>
-                </div>
-                <div class="ct_data_content_container bg_blue">
-                  <div class="icon_holder">
-                    <img src="../assets/shp_5.svg" width="100%" height="100%"/>
-                  </div>
-                  <div class="ts_cc">
-                    <p>WATER USED (BATH TUBS)</p>
-                    <p class="cc_value">
-                      {{formatCurrency(total_saving.water_used_bath_tubs)}}
-                    </p>
-                  </div>
-                </div>
-                <div class="ct_data_content_container bg_brown bottom">
-                  <div class="icon_holder">
-                    <img src="../assets/shp_6.svg" width="100%" height="100%"/>
-                  </div>
-                  <div class="ts_cc">
-                    <p>BARRELS OF OIL</p>
-                    <p class="cc_value">
-                      {{formatCurrency(total_saving.barrels_of_oil)}}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </section>
         </div>
         <div class="result_cc_second">
           <div class="cc_grid_container">
             <div class="grid_item">
+              <p class="ct_p">Water Saving</p>
+              <div class="row_space_btwn_start gi_card_bottom">
+                <div class="wd_100">
+                  <div class="bg_dark_blue gi_c_bottom_c">
+                    <div class="icon_holder">
+                      <img src="../assets/shp_7.svg" width="100%" height="100%"/>
+                    </div>
+                    <div class="ts_cc">
+                      <p>LITRES OF WATER USED</p>
+                      <p class="cc_value">
+                        {{formatCurrency(collar_water_saving.litres_of_water_used)}}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="bg_blue gi_c_bottom_c">
+                    <div class="icon_holder">
+                      <img src="../assets/shp_5.svg" width="100%" height="100%"/>
+                    </div>
+                    <div class="ts_cc">
+                      <p>WATER USED (BATH TUBS)</p>
+                      <p class="cc_value">
+                        {{formatCurrency(collar_water_saving.water_used_bath_tubs)}}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="gi_content">
                 <div class="tch">
                   <p>Traditional leather collar</p>
                 </div>
                 <div class="row_space_btwn_center">
                   <div class="tcb_content_container bg_light_green">
-                    <img src="../assets/shp_1.svg" width="auto" height="25%" class="shp_icon"/>
+                    <img src="../assets/shp_8.svg" width="auto" height="25%" class="shp_icon"/>
                     <p>litres of water used</p>
                     <p class="cc_value">
                       {{formatCurrency(traditional_leather_collar.litres_of_water_used)}}
@@ -250,7 +284,7 @@
                 </div>
                 <div class="row_space_btwn_center">
                   <div class="tcb_content_container bg_light_green">
-                    <img src="../assets/shp_1.svg" width="auto" height="25%" class="shp_icon"/>
+                    <img src="../assets/shp_8.svg" width="auto" height="25%" class="shp_icon"/>
                     <p>litres of water used</p>
                     <p class="cc_value">
                       {{formatCurrency(recycled_leather_collar.litres_of_water_used)}}
@@ -265,42 +299,42 @@
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="grid_item">
+              <p class="ct_p">Water Saving</p>
               <div class="row_space_btwn_start gi_card_bottom">
-                <p class="ct_p">Water Saving</p>
                 <div class="wd_100">
-                  <div class="bg_green gi_c_bottom_c">
+                  <div class="bg_dark_blue gi_c_bottom_c">
                     <div class="icon_holder">
-                      <img src="../assets/shp_4.svg" width="100%" height="100%"/>
+                      <img src="../assets/shp_7.svg" width="100%" height="100%"/>
                     </div>
                     <div class="ts_cc">
                       <p>LITRES OF WATER USED</p>
                       <p class="cc_value">
-                        {{formatCurrency(collar_water_saving.litres_of_water_used)}}
+                        {{formatCurrency(leash_water_saving.litres_of_water_used)}}
                       </p>
                     </div>
                   </div>
                   <div class="bg_blue gi_c_bottom_c">
                     <div class="icon_holder">
-                      <img src="../assets/shp_4.svg" width="100%" height="100%"/>
+                      <img src="../assets/shp_5.svg" width="100%" height="100%"/>
                     </div>
                     <div class="ts_cc">
                       <p>WATER USED (BATH TUBS)</p>
                       <p class="cc_value">
-                        {{formatCurrency(collar_water_saving.water_used_bath_tubs)}}
+                        {{formatCurrency(leash_water_saving.water_used_bath_tubs)}}
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="grid_item">
               <div class="gi_content">
                 <div class="tch">
                   <p>Traditional leather leash</p>
                 </div>
                 <div class="row_space_btwn_center">
                   <div class="tcb_content_container bg_light_green">
-                    <img src="../assets/shp_1.svg" width="auto" height="25%" class="shp_icon"/>
+                    <img src="../assets/shp_8.svg" width="auto" height="25%" class="shp_icon"/>
                     <p>litres of water used</p>
                     <p class="cc_value">
                       {{formatCurrency(traditional_leather_leash.litres_of_water_used)}}
@@ -321,7 +355,7 @@
                 </div>
                 <div class="row_space_btwn_center">
                   <div class="tcb_content_container bg_light_green">
-                    <img src="../assets/shp_1.svg" width="auto" height="25%" class="shp_icon"/>
+                    <img src="../assets/shp_8.svg" width="auto" height="25%" class="shp_icon"/>
                     <p>litres of water used</p>
                     <p class="cc_value">
                       {{formatCurrency(recycled_leather_leash.litres_of_water_used)}}
@@ -336,33 +370,6 @@
                   </div>
                 </div>
               </div>
-              <div class="row_space_btwn_start gi_card_bottom">
-                <p class="ct_p">Water Saving</p>
-                <div class="wd_100">
-                  <div class="bg_green gi_c_bottom_c">
-                    <div class="icon_holder">
-                      <img src="../assets/shp_4.svg" width="100%" height="100%"/>
-                    </div>
-                    <div class="ts_cc">
-                      <p>LITRES OF WATER USED</p>
-                      <p class="cc_value">
-                        {{formatCurrency(leash_water_saving.litres_of_water_used)}}
-                      </p>
-                    </div>
-                  </div>
-                  <div class="bg_blue gi_c_bottom_c">
-                    <div class="icon_holder">
-                      <img src="../assets/shp_4.svg" width="100%" height="100%"/>
-                    </div>
-                    <div class="ts_cc">
-                      <p>WATER USED (BATH TUBS)</p>
-                      <p class="cc_value">
-                        {{formatCurrency(leash_water_saving.water_used_bath_tubs)}}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
             <div class="grid_item h_fit">
               <h4 class="table_h">Co2 saving per item</h4>
@@ -370,7 +377,7 @@
                 <p>Recycled leather collar</p>
               </div>
               <div class="tcb_content_container_mini bg_light_faint">
-                <img src="../assets/shp_1.svg" width="auto" height="25%" class="shp_icon"/>
+                <img src="../assets/shp_9.svg" width="auto" height="25%" class="shp_icon"/>
                 <p>c02 saved (tons)</p>
                 <p class="cc_value">
                   {{formatCurrency(
@@ -383,7 +390,7 @@
                 <p>Recycled leather leash</p>
               </div>
               <div class="tcb_content_container_mini bg_light_faint">
-                <img src="../assets/shp_1.svg" width="auto" height="25%" class="shp_icon"/>
+                <img src="../assets/shp_9.svg" width="auto" height="25%" class="shp_icon"/>
                 <p>c02 saved (tons)</p>
                 <p class="cc_value">
                   {{formatCurrency(
