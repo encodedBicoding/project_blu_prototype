@@ -3,7 +3,7 @@
     <div class="loader" v-if="isLoading">
       <img src="../assets/spinner.svg" width="130px" height="130px"/>
     </div>
-    <modal class="modal" v-if="showEditDataModal">
+    <div class="modal" v-if="showEditDataModal">
       <div class="analysis_form">
         <h4 name="dog bed analysis">Dog Bed Analysis</h4>
         <div class="form_item_container">
@@ -53,7 +53,23 @@
           <button class="close_button" type="submit" v-on:click="hideEditModal">Close</button>
         </div>
       </div>
-    </modal>
+    </div>
+    <div class="modal" v-if="showCompanyModal" name="modal_for_company">
+      <div class="modal_container">
+        <div class="closer">
+          <p class="closer_btn" v-on:click="toggleCompanyModal">x</p>
+        </div>
+        <h4 name="dog bed analysis">Select Company</h4>
+        <div class="row_space_btwn_center">
+          <div class="com_mod_img_con" v-on:click="selectCompany('pets_co')">
+            <img src="../assets/petco_img.png" width="100%" height="100%"/>
+          </div>
+          <div class="com_mod_img_con" v-on:click="selectCompany('pets_at_home')">
+            <img src="../assets/pets_at_home.png" width="100%" height="100%"/>
+          </div>
+        </div>
+      </div>
+    </div>
     <div v-if="!hasResults" class="starter_page">
       <NavBar/>
       <div class="main_container">
@@ -96,11 +112,37 @@
               placeholder="Enter Amount"
               v-model="noOfLeatherLeashesSold"
               />
-
             </div>
           </div>
           <div class="submit_container">
             <button class="button" type="submit" v-on:click="processData">Process</button>
+          </div>
+        </div>
+        <div class="ecom_analysis_form">
+          <h4 name="dog bed analysis">Ecommerce analysis</h4>
+           <div class="form_item_container">
+            <div class="form_item">
+              <label class="label">Select company name</label>
+              <div class="row_space_btwn_center ea_cont">
+                <p class="ea_t">{{determineSelectedCompany()}}</p>
+                <div class="ea_btn" v-on:click="toggleCompanyModal">
+                  <p>Change</p>
+                </div>
+              </div>
+            </div>
+            <div class="form_item">
+              <label class="label">Upload CSV</label>
+              <input hidden v-on:change="selectCSV" accept=".csv" type="file" id="comp_csv"/>
+              <div class="row_space_btwn_center ea_cont">
+                <p class="ea_t">{{csvFileName}}</p>
+                <div class="ea_btn" onclick="document.getElementById('comp_csv').click()">
+                  <p>{{this.csvFile === null ? 'Select file' : 'Update file'}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+           <div class="submit_container">
+            <button class="button" type="submit" v-on:click="processDataCSV">Process</button>
           </div>
         </div>
       </div>
@@ -425,6 +467,10 @@ export default {
       averageDogBedWeight: '3.5',
       noOfLeatherCollarSold: null,
       noOfLeatherLeashesSold: null,
+      selectedCompany: 'pets_at_home',
+      showCompanyModal: false,
+      csvFile: null,
+      csvFileName: '',
       formErrors: {},
       dog_beds_made_from_virgin_polyester: {
         co2_per_ton: 18750,
@@ -476,6 +522,26 @@ export default {
     };
   },
   methods: {
+    selectCSV(e) {
+      const file = e.target.files[0];
+      this.csvFile = file;
+      this.csvFileName = file.name;
+    },
+    toggleCompanyModal() {
+      this.showCompanyModal = !this.showCompanyModal;
+    },
+    selectCompany(val) {
+      this.selectedCompany = val;
+      this.toggleCompanyModal();
+    },
+    determineSelectedCompany() {
+      switch (this.selectedCompany) {
+        case 'pets_at_home':
+          return 'Pets at Home';
+        default:
+          return 'Pet co';
+      }
+    },
     showEditModal() {
       this.showEditDataModal = true;
     },
@@ -511,6 +577,55 @@ export default {
       }
       this.formErrors = {};
       return true;
+    },
+    async processDataCSV() {
+      try {
+        const url = 'https://staging.bloverse.com/extraction/dog_details_csv';
+        if (!this.csvFile) {
+          return;
+        }
+        this.isLoading = true;
+        const formData = new FormData();
+        formData.append('csv_file', this.csvFile);
+        const response = await this.axios.post(
+          url,
+          formData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          },
+        );
+        this.isLoading = false;
+        if (response.status === 200) {
+          // dog bed;
+          const dogBed = response.data.data[0];
+          this.dog_beds_made_from_virgin_polyester = dogBed.dog_beds_made_from_virgin_polyester;
+          this.dog_beds_made_from_recycled_polyester = dogBed
+            .dog_beds_made_from_recycled_polyester;
+          this.total_saving = dogBed.total_saving;
+          const collarLeash = response.data.data[1];
+          this.collar_water_saving = collarLeash.collar_water_saving;
+          this.leash_water_saving = collarLeash.leash_water_saving;
+          this.recycled_leather_collar = collarLeash.recycled_leather_collar;
+          this.recycled_leather_leash = collarLeash.recycled_leather_leash;
+          this.traditional_leather_collar = collarLeash.traditional_leather_collar;
+          this.traditional_leather_leash = collarLeash.traditional_leather_leash;
+          this.hasResults = true;
+          const co2PerSaving = response.data.data[2];
+          this.co2_saving_per_item.recycled_leather_collar.co2_saved = co2PerSaving
+            .recycled_leather_collar;
+          this.co2_saving_per_item.recycled_leather_leash.co2_saved = co2PerSaving
+            .recycled_leather_leash;
+        } else {
+          this.isLoading = false;
+          this.hasResults = false;
+        }
+      } catch (err) {
+        this.isLoading = false;
+        this.hasResults = false;
+        console.log(err);
+      }
     },
     async processData() {
       try {

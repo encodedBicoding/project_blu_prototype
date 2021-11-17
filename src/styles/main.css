@@ -31,8 +31,9 @@
 .modal_container{
   z-index: 500;
   background-color: #fff;
-  padding: .5rem;
-  width: 40%;
+  padding: 1rem;
+  width: 30%;
+  border-radius: 5px;
 }
 .starter_page,
 .results_page{
@@ -85,11 +86,14 @@
   gap: 3%;
   grid-template-rows: auto;
 }
-.analysis_form{
+.analysis_form,
+.ecom_analysis_form{
   background-color: #fff;
   width: 35%;
   padding: 1.5rem;
   margin: 3rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
   border-radius: 5px;
   color: #000;
   position: relative;
@@ -139,7 +143,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 2rem 0 0 0;
+  margin: 1rem 0 0 0;
 }
 .close_container{
   margin: .8rem 0 0 0;
@@ -161,11 +165,27 @@
   background-color: #fff;
   color: #000;
 }
+.closer{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.closer_btn{
+  cursor: pointer;
+}
 .row_space_btwn_center{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+.com_mod_img_con{
+  margin-top: .7rem;
+  width: auto;
+  height: 100px;
+  cursor: pointer;
 }
 .row_space_btwn_start{
   display: flex;
@@ -362,8 +382,38 @@
 .wd_100{
   width: 100%;
 }
+.ea_cont{
+  background-color: #F1F1F1;
+  padding: .3rem;
+  border-radius: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  position: relative;;
+}
+.ea_t {
+  font-size: .77rem;
+  padding-left: .3rem;
+  font-weight: 600;
+}
+.ea_btn{
+  width: auto;
+  padding: .4rem;
+  background-color: #4367DB; 
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+}
+.ea_btn p{
+  font-size: .8rem;
+  outline: none;
+  color: #fff;
+  font-weight: 600;
+}
 @media screen and (max-width: 1024px) {
-  .analysis_form{
+  .analysis_form,
+  .ecom_analysis_form{
     width: 50%;
   }
 }
@@ -380,13 +430,15 @@
     width: 100%;
     height: calc(100vh);
   }
-  .analysis_form{
+  .analysis_form,
+  .ecom_analysis_form{
     width: 80%;
     overflow: hidden;
   }
 }
 @media screen and (max-width: 500px) {
-  .analysis_form{
+  .analysis_form,
+  .ecom_analysis_form{
     width: 80%;
     margin: 0;
     padding: 1rem;
